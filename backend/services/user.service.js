@@ -4,10 +4,11 @@ const userModel = require('../models/user.model.js')
 module.exports.createUser = async({
     firstname, lastname, email, password
 }) => {
-    if(!fullname.firstname || !email || !password){
-        throw new Error('All Fields required')
+    if(!firstname || !email || !password){
+        console.error("All fields are reuired");
     }
-    return await userModel.create({
+    // console.log(password);
+    const user = await userModel.create({
         fullname: {
             firstname,
             lastname
@@ -15,4 +16,15 @@ module.exports.createUser = async({
         email,
         password
     })
+
+    console.log(await user.password);
+    
+    return user
+}
+
+module.exports.findUserByEmail = async(email) => {
+    const user = await userModel.findOne({email})
+    console.log(user.passwords + "from service");
+    
+    return user
 }

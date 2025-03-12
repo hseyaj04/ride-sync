@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        select: true
+        select: false
     },
     socketId: {
         type: String
@@ -36,9 +36,14 @@ userSchema.methods.generateAuthToken = () => {
 }
 
 
-userSchema.methods.comparePassword = async (password) => {
-    return await bcrypt.compare(password, this.password)
-}
+userSchema.methods.comparePassword = async function (password) {
+    console.log(password, this.password);
+    
+    if (!password || !this.password) {
+        throw new Error("Password and hash are required");
+    }
+    return await bcrypt.compare(password, this.password);
+};
 
 userSchema.statics.hashPassword = async (password) => {
     return await bcrypt.hash(password, 10)
