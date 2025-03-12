@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        required: true
+        required: true,
+        select: true
     },
     socketId: {
         type: String
@@ -39,7 +40,7 @@ userSchema.methods.comparePassword = async (password) => {
     return await bcrypt.compare(password, this.password)
 }
 
-userSchema.methods.hashPassword = async (password) => {
+userSchema.statics.hashPassword = async (password) => {
     return await bcrypt.hash(password, 10)
 }
 
