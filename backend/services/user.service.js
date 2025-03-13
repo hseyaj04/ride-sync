@@ -22,9 +22,3 @@ module.exports.createUser = async({
     return user
 }
 
-module.exports.findUserByEmail = async(email) => {
-    const user = await userModel.findOne({email})
-    console.log(user.passwords + "from service");
-    
-    return user
-}

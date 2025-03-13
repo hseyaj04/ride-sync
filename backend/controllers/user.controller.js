@@ -53,33 +53,24 @@ module.exports.userLogin = async (req, res) => {
         return res.status(400).json({errors: errors.array()})
     }
 
-
     const {email, password} = req.body;
-    const user = await userService.findUserByEmail(email);
-    if(!user){
-        throw new ApiError(400, "Invalid Email")
+    const user = await userModel.findOne({ email }).select('+password');
+
+    if (!user) {
+        return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    
-    if(!(user.comparePassword(password))){
-        throw new ApiError(400, "Invalid password")
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) {
+        return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     const token = user.generateAuthToken();
 
-    return res.status(201).json(
-        new ApiResponse(
-            200,
-            "user created",
-            {
-                token: token,
-                _id: user._id,
-                fullname: user.fullname,
-                email: user.email,
-                socketId: user.socketId
-            }
-        )
-    )
+    res.cookie('token', token);
+
+    res.status(200).json({ token, user });
 
 
 }
