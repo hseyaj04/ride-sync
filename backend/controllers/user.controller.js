@@ -91,7 +91,8 @@ module.exports.getUserProfile = async (req, res) => {
 module.exports.userLogout = async(req, res) => {
     res.clearCookie('token');
     const token = req.cookies.token || req.headers.authorization.split(' ')[1];
-
+    console.log(token);
+    
     await blacklistTokenModel.create({ token });
     return res.status(200).json(new ApiResponse(200, "user logged out successfully", null))
 }
