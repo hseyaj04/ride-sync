@@ -23,7 +23,7 @@ module.exports.registerCaptain = async (req, res) => {
     
 
 
-    const isCaptainAlreadyPresent = await userModel.findOne({email})
+    const isCaptainAlreadyPresent = await captainModel.findOne({email})
 
 
 

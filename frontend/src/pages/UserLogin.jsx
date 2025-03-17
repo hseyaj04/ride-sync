@@ -1,15 +1,29 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import {UserDataContext} from '../context/UserContext'
+import { useContext } from 'react'
 const UserLogin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [userData, setUserData] = useState({})
-    const submitHandler = (e) => {
+    const {user, setUser} = useContext(UserDataContext)
+
+    const navigate = useNavigate();
+    const submitHandler = async (e) => {
         e.preventDefault();
-        setUserData({
+        const newUser = {
             email: email,
             password: password
-        })
+        }
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, newUser)
+        if(response.status === 200){
+            const data = response.data
+            setUser(data.user);
+            localStorage.setItem('token', data.token)
+            navigate('/home');
+            
+        }
+        
         // console.log(userData);
         
         setEmail('')
