@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import {UserLogout, CaptainLogout, CaptainProtectedWrapper, UserProtectedWrapper, CaptainLogin, CaptainHome, CaptainRegister, Start, UserLogin, UserRegister, Home} from './pages/index'
+import {Riding, UserLogout, CaptainLogout, CaptainProtectedWrapper, UserProtectedWrapper, CaptainLogin, CaptainHome, CaptainRegister, Start, UserLogin, UserRegister, Home} from './pages/index'
 
 const App = () => {
   return (
@@ -8,6 +8,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/user-login" element={<UserLogin />} />
+        <Route path="/riding" element={<Riding />} />
 
         <Route path="/user-register" element={<UserRegister />} />
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import 
-
-function CaptainHome() {
+import {Link} from 'react-router-dom'
+const Riding = () => {
   return (
     <div>
       <div className='h-screen w-full'>
@@ -69,4 +68,4 @@ function CaptainHome() {
   )
 }
 
-export default CaptainHome
+export default Riding
