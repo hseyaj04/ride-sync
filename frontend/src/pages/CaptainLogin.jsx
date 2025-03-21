@@ -35,7 +35,10 @@ const CaptainLogin = () => {
         // console.log(userData);
         
         setEmail('')
-        setPassword('')  
+        setPassword('') 
+        console.log(localStorage.getItem('token'));
+        
+         
     }
     return (
     <div className='p-7 h-screen flex flex-col justify-between'>

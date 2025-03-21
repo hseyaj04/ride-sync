@@ -6,17 +6,19 @@ import { useNavigate } from 'react-router-dom'
 export const CaptainLogout = () => {
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
-
-    axios.post(`${import.meta.env.VITE_API_URL}/captains/logout`, {
+    
+    axios.post(`${import.meta.env.VITE_API_URL}/captains/logout`, {},{
         headers: {
             Authorization: `Bearer ${token}`
         }
     }).then((response) => {
+        
         if (response.status === 200) {
-            localStorage.removeItem('captain-token')
+            localStorage.removeItem('token')
             navigate('/captain-login')
         }
-    }).catch(e => {
+    })
+    .catch(e => {
       console.log(e);
       
     })
