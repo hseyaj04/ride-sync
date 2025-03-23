@@ -6,7 +6,7 @@ async function connectToDb(){
         console.log(`connected to DB: ${connectionInstance.connection.host}`);
         
     } catch (error) {
-        throw new error
+        throw error
     }
     
 }
