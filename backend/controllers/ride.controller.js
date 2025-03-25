@@ -20,3 +20,21 @@ module.exports.createRide = async (req, res) => {
 
 
 }
+
+
+module.exports.getFare = async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        throw new Error(errors)
+    }
+
+    const {pickup, destination} = req.query
+
+    try {
+        const fare = await rideService.getfare(pickup, destination)
+        return res.status(200).json(fare)
+    } catch (error) {
+        return res.status(400).json(error)
+
+    }
+}

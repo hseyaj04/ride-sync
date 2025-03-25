@@ -51,6 +51,8 @@ async function getFare(pickup, destination) {
 }
 
 
+module.exports.getfare = getFare;
+
 
 module.exports.createRide = async (
     user, 

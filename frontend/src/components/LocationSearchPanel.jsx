@@ -1,27 +1,30 @@
 import React from 'react'
 
-function LocationSearchPanel(props) {
-  console.log(props);
-  
-  const locations = [
-    "N12, C130 Swami Vivekanand Nagar, Aurangabad, Maharashtra", 
-    "2456 Willowbrook Lane, Springfield, CA 94567", 
-    "378 Elmhurst Road, Brookside, VT 05089", 
-    "5210 Silverpine Circle, Willow Creek, TX 79834"
-  ]
-  return (
-    <div>
+const LocationSearchPanel = ({ suggestions, setVehiclePanel, setPanelOpen, setPickup, setDestination, activeField }) => {
+
+    const handleSuggestionClick = (suggestion) => {
+        if (activeField === 'pickup') {
+            setPickup(suggestion.description)
+        } else if (activeField === 'destination') {
+            setDestination(suggestion.description)
+        }
+        // setVehiclePanel(true)
+        // setPanelOpen(false)
+    }
+
+    return (
+        <div className='mt-10'>
+            {/* Display fetched suggestions */}
             {
-              locations.map((location, idx) => {
-                return <div onClick={() => {props.setVehiclePanel(true); props.setPanelOpen(false)}} key={idx} className='mx-2 py-2 active:border-black border-2 border-white rounded-2xl flex items-center justify-start mb-7'>
-                            <h4 className='text-xl mx-3 bg-gray-200 p-2 rounded-4xl'><i className="ri-map-pin-line"></i></h4>
-                            <h4 className='font-semibold'>{location}</h4>
-                        </div>
-              })
+                suggestions.map((elem, idx) => (
+                    <div key={idx} onClick={() => handleSuggestionClick(elem)} className='flex m-2 bg-gray-100 gap-4 border-2 p-3 border-gray-50 active:border-black rounded-3xl items-center my-2 justify-start'>
+                        <h2 className='bg-[#eee] h-8 flex items-center justify-center w-1/10 rounded-full'><i className="ri-map-pin-fill"></i></h2>
+                        <h4 className='font-medium w-9/10'>{elem.description}</h4>
+                    </div>
+                ))
             }
-            
-    </div>
-  )
+        </div>
+    )
 }
 
 export default LocationSearchPanel

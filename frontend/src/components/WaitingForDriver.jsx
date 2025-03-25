@@ -9,8 +9,7 @@ const WaitingForDriver = () => {
             props.setWaitingForDriver(false)
         }}
         className='w-full text-center absolute top-0 font-semibold text-2xl p-1'>
-            <i className="text-gray-300 ri-arrow-down-wide-line"></i>
-        </h3>
+<i className="text-gray-300 ri-close-line"></i>        </h3>
 
         <div className='flex items-center justify-between'>
           <img className='h-20' src="https://imgs.search.brave.com/ZSfOBcRenS59ty2hfRYzRQNa1Z_44aCWpo3cH6-Fe34/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMTIvRHJp/dmVyLVBORy1JbWFn/ZS1IRC5wbmc" alt="" />

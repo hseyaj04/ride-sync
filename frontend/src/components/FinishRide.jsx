@@ -8,8 +8,7 @@ const FinishRide = (props) => {
             props.setFinishRide(false)
         }}
         className='w-full text-center absolute top-0 font-semibold text-2xl p-1'>
-            <i className="text-gray-300 ri-arrow-down-wide-line"></i>
-        </h3>
+<i className="text-gray-300 ri-close-line"></i>        </h3>
         <div className='mb-7 mt-2 p-1'><h1 className='text-2xl font-semibold'>Confirm this ride to start</h1></div>
 
 
