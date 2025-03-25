@@ -13,12 +13,13 @@ function ConfirmRide(props) {
             props.setVehiclePanel(true)
         }}
         className='w-full text-center absolute top-0 font-semibold text-2xl p-1'>
-<i className="text-gray-300 ri-close-line"></i>        </h3>
+          <i className="text-gray-300 ri-close-line"></i>        
+        </h3>
         <div className='mb-7 mt-2 p-1'><h1 className='text-2xl font-semibold'>Confirm your ride</h1></div>
 
 
         <div className='flex gap-2 justify-center flex-col items-center'>        
-          <img className='h-40' src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1712027307/assets/42/eb85c3-e2dc-4e95-a70d-22ee4f08015f/original/Screenshot-2024-04-01-at-9.08.07p.m..png" alt="" />
+          <img className='h-40' src="https://cdn.dribbble.com/userupload/20528862/file/original-97f1edb7479ab2e21831579239abd489.gif" alt="" />
         
           <div className='w-full'>
 
@@ -48,6 +49,7 @@ function ConfirmRide(props) {
           <button onClick={() => {
             props.setVehicleFound(true)
             props.setConfirmRidePanel(false)
+            props.createRide()
           }} className='w-full rounded-lg bg-green-600 p-2 text-white text-lg font-semibold'>Confirm</button>
         </div>
     </div>

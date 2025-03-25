@@ -170,6 +170,24 @@ const findTrip = async () => {
 }
 
 
+async function createRide() {
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/rides/create`, {
+      pickup,
+      destination,
+      vehicleType
+  }, {
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+  })
+
+  console.log(response.data);
+  
+
+
+}
+
+
   return (
     <div className='h-screen relative'>
       <img className='w-20 ml-5 mt-4 absolute' src="https://imgs.search.brave.com/FZq7YFqzVbkjhipVXmxfaZY-RmPwy3wsG0WV1UdM8bs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjAv/MDUvVWJlci1Mb2dv/LTcwMHgzOTQucG5n" alt="" />
@@ -245,7 +263,7 @@ const findTrip = async () => {
       className='fixed z-10 bottom-0 bg-white p-3 py-7 w-full translate-y-full' 
       ref={confirmRidePanelRef}
       >
-      <ConfirmRide pickup={pickup} destination={destination} vehicleType={vehicleType} setConfirmRidePanel = {setConfirmRidePanel} setVehiclePanel = {setVehiclePanel} fare={fare} setVehicleFound = {setVehicleFound}/>
+      <ConfirmRide createRide={createRide} pickup={pickup} destination={destination} vehicleType={vehicleType} setConfirmRidePanel = {setConfirmRidePanel} setVehiclePanel = {setVehiclePanel} fare={fare} setVehicleFound = {setVehicleFound}/>
       </div>
       <div 
       className='fixed z-10 bottom-0 bg-white p-3 py-7 w-full translate-y-full' 
