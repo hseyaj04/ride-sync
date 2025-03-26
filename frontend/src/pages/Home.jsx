@@ -80,60 +80,130 @@ function Home() {
   // }, [panelOpen] )
 
 
-  useGSAP(() => {
-    if(vehiclePanel){
-      gsap.to(vehiclePanelRef.current, {
-        transform: 'translateY(0)'
-      })
-    }else{
-      gsap.to(vehiclePanelRef.current, {
-        transform: 'translateY(100%)'
-      })
-    }
+  // useGSAP(() => {
+  //   if(vehiclePanel){
+  //     gsap.to(vehiclePanelRef.current, {
+  //       transform: 'translateY(0)'
+  //     })
+  //   }else{
+  //     gsap.to(vehiclePanelRef.current, {
+  //       transform: 'translateY(100%)'
+  //     })
+  //   }
     
-  }, [vehiclePanel])
+  // }, [vehiclePanel])
 
 
-  useGSAP(() => {
-    if(confirmRidePanel){
-      gsap.to(confirmRidePanelRef.current, {
-        transform: 'translateY(0)'
-      })
-    }else{
-      gsap.to(confirmRidePanelRef.current, {
-        transform: 'translateY(100%)'
-      })
-    }
+  // useGSAP(() => {
+  //   if(confirmRidePanel){
+  //     gsap.to(confirmRidePanelRef.current, {
+  //       transform: 'translateY(0)'
+  //     })
+  //   }else{
+  //     gsap.to(confirmRidePanelRef.current, {
+  //       transform: 'translateY(100%)'
+  //     })
+  //   }
     
-  }, [confirmRidePanel])
+  // }, [confirmRidePanel])
 
 
-  useGSAP(() => {
-    if(vehicleFound){
-      gsap.to(vehicleFoundRef.current, {
-        transform: 'translateY(0)'
-      })
-    }else{
-      gsap.to(vehicleFoundRef.current, {
-        transform: 'translateY(100%)'
-      })
-    }    
-  }, [vehicleFound])
+  // useGSAP(() => {
+  //   if(vehicleFound){
+  //     gsap.to(vehicleFoundRef.current, {
+  //       transform: 'translateY(0)'
+  //     })
+  //   }else{
+  //     gsap.to(vehicleFoundRef.current, {
+  //       transform: 'translateY(100%)'
+  //     })
+  //   }    
+  // }, [vehicleFound])
 
-  useGSAP(() => {
-    if(waitingForDriver){
-      gsap.to(waitingForDriverRef.current, {
-        transform: 'translateY(0)'
-      })
-    }else{
-      gsap.to(waitingForDriverRef.current, {
-        transform: 'translateY(100%)'
-      })
-    }
+  // useGSAP(() => {
+  //   if(waitingForDriver){
+  //     gsap.to(waitingForDriverRef.current, {
+  //       transform: 'translateY(0)'
+  //     })
+  //   }else{
+  //     gsap.to(waitingForDriverRef.current, {
+  //       transform: 'translateY(100%)'
+  //     })
+  //   }
     
-  }, [waitingForDriver])
+  // }, [waitingForDriver])
 
-  
+  useGSAP(function () {
+    if (panelOpen) {
+        gsap.to(panelRef.current, {
+            height: '70%',
+            padding: 24
+            // opacity:1
+        })
+        gsap.to(panelCloseRef.current, {
+            opacity: 1
+        })
+    } else {
+        gsap.to(panelRef.current, {
+            height: '0%',
+            padding: 0
+            // opacity:0
+        })
+        gsap.to(panelCloseRef.current, {
+            opacity: 0
+        })
+    }
+}, [ panelOpen ])
+
+
+useGSAP(function () {
+    if (vehiclePanel) {
+        gsap.to(vehiclePanelRef.current, {
+            transform: 'translateY(0)'
+        })
+    } else {
+        gsap.to(vehiclePanelRef.current, {
+            transform: 'translateY(100%)'
+        })
+    }
+}, [ vehiclePanel ])
+
+useGSAP(function () {
+    if (confirmRidePanel) {
+        gsap.to(confirmRidePanelRef.current, {
+            transform: 'translateY(0)'
+        })
+    } else {
+        gsap.to(confirmRidePanelRef.current, {
+            transform: 'translateY(100%)'
+        })
+    }
+}, [ confirmRidePanel ])
+
+useGSAP(function () {
+    if (vehicleFound) {
+        gsap.to(vehicleFoundRef.current, {
+            transform: 'translateY(0)'
+        })
+    } else {
+        gsap.to(vehicleFoundRef.current, {
+            transform: 'translateY(100%)'
+        })
+    }
+}, [ vehicleFound ])
+
+useGSAP(function () {
+    if (waitingForDriver) {
+        gsap.to(waitingForDriverRef.current, {
+            transform: 'translateY(0)'
+        })
+    } else {
+        gsap.to(waitingForDriverRef.current, {
+            transform: 'translateY(100%)'
+        })
+    }
+}, [ waitingForDriver ])
+ 
 
   const handlePickupChange = async (e) => {
     
