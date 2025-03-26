@@ -3,11 +3,11 @@ import React from 'react'
 const LookingForDriver = (props) => {
 
   const fares = props.fare.fares;
-  console.log(fares[props.vehicleType]);
+  // console.log(fares[props.vehicleType]);
   
 
   return (
-    <div className='mb-10'>
+    <div>
       {/* remove drop down in production */}
         <h3 
         onClick={() => {

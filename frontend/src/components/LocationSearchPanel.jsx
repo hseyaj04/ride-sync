@@ -13,7 +13,7 @@ const LocationSearchPanel = ({ suggestions, setVehiclePanel, setPanelOpen, setPi
     }
 
     return (
-        <div className='mt-10'>
+        <div>
             {/* Display fetched suggestions */}
             {
                 suggestions.map((elem, idx) => (

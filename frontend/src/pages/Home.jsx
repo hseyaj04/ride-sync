@@ -35,27 +35,49 @@ function Home() {
     e.preventDefault()
   }
 
-
-
-  useGSAP(function(){
-    if(panelOpen){
-      gsap.to(panelRef.current, {
-        height: '60%',
-        opacity: 1
-      })
-      gsap.to(panelCloseRef.current, {
-        opacity:1
-      })
-    }else{
-      gsap.to(panelRef.current, {
-        height:'0%'
-      })
-      gsap.to(panelCloseRef.current, {
-        opacity:0
-      })
+  useGSAP(function () {
+    if (panelOpen) {
+        gsap.to(panelRef.current, {
+            height: '70%',
+            padding: 24
+            // opacity:1
+        })
+        gsap.to(panelCloseRef.current, {
+            opacity: 1
+        })
+    } else {
+        gsap.to(panelRef.current, {
+            height: '0%',
+            padding: 0
+            // opacity:0
+        })
+        gsap.to(panelCloseRef.current, {
+            opacity: 0
+        })
     }
+}, [ panelOpen ])
+
+
+
+  // useGSAP(function(){
+  //   if(panelOpen){
+  //     gsap.to(panelRef.current, {
+  //       height: '60%',
+  //       opacity: 1
+  //     })
+  //     gsap.to(panelCloseRef.current, {
+  //       opacity:1
+  //     })
+  //   }else{
+  //     gsap.to(panelRef.current, {
+  //       height:'0%'
+  //     })
+  //     gsap.to(panelCloseRef.current, {
+  //       opacity:0
+  //     })
+  //   }
     
-  }, [panelOpen] )
+  // }, [panelOpen] )
 
 
   useGSAP(() => {
@@ -180,12 +202,9 @@ async function createRide() {
           Authorization: `Bearer ${localStorage.getItem('token')}`
       }
   })
-
-  console.log(response.data);
   
-
-
-}
+  // console.log(response.data);
+  }
 
 
   return (
@@ -196,7 +215,7 @@ async function createRide() {
         <img className='h-full w-full object-cover' src="https://simonpan.com/wp-content/themes/sp_portfolio/assets/uber-unexpected-pullover.jpg" alt="" />
       </div>
       <div className='flex flex-col justify-end h-screen absolute top-0 w-full '>
-        <div className='h-[25%] p-5 bg-white relative rounded-t-lg'>
+        <div className='h-[30%] p-5 bg-white relative rounded-t-lg'>
           <h5 
           className='absolute opacity-0 top-5 right-6 text-3xl'
           ref={panelCloseRef}
@@ -239,18 +258,15 @@ async function createRide() {
             >Continue</button>
           </form>
         </div>
-        <div
-        className="bg-white h-[60%]"
-        ref={panelRef}
-        >
-        <LocationSearchPanel
-            suggestions={activeField === 'pickup' ? pickupSuggestions : destinationSuggestions}
-            setPanelOpen={setPanelOpen}
-            setVehiclePanel={setVehiclePanel}
-            setPickup={setPickup}
-            setDestination={setDestination}
-            activeField={activeField}
-        />
+        <div ref={panelRef} className='bg-white h-0'>
+          <LocationSearchPanel
+              suggestions={activeField === 'pickup' ? pickupSuggestions : destinationSuggestions}
+              setPanelOpen={setPanelOpen}
+              setVehiclePanel={setVehiclePanel}
+              setPickup={setPickup}
+              setDestination={setDestination}
+              activeField={activeField}
+          />
         </div>
       </div>
       <div 
@@ -272,7 +288,7 @@ async function createRide() {
         <LookingForDriver pickup={pickup} destination={destination} vehicleType={vehicleType} fare={fare} setConfirmRidePanel={setConfirmRidePanel} setVehicleFound = {setVehicleFound}/>
       </div>
       <div 
-      className='fixed z-10 bottom-0 bg-white p-3 py-7 w-full translate-full' 
+      className='fixed z-10 bottom-0 bg-white p-3 py-7 w-full translate-y-full' 
       ref={waitingForDriverRef}
       >
         <WaitingForDriver setWaitingForDriver = {setWaitingForDriver}/>
